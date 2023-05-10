@@ -5,7 +5,6 @@ if (!workerData || !parentPort) {
 }
 
 const workerPath = /** @type {string} */ (workerData);
-const importPromise = import(workerPath);
 
 parentPort.on('message', (message) => {
   (async () => {
@@ -13,6 +12,7 @@ parentPort.on('message', (message) => {
     /** @type {{port: MessagePort, shared: SharedArrayBuffer, args: any[]}} */
     const typedMessage = message;
     const { port, shared, args } = typedMessage;
+    const importPromise = import(workerPath);
 
     try {
       const { default: method } = await importPromise;
