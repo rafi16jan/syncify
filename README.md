@@ -6,7 +6,7 @@ This'll allow you to call async methods _as if_ they were sync, but you have to 
 
 # Usage
 
-Currently ESM for now, but could be made CJS.
+~~Currently ESM for now, but could be made CJS.~~ This fork fixes some issue and convert it to CJS module.
 
 Here's a demo which artificially loads a file using the async API of the built-in FS library, but makes those calls sync to the main thread.
 
@@ -14,9 +14,8 @@ In your main file:
 
 ```js
 // main.js
-import build from 'syncingabout';
-
-const method = build('./method.js');  // relative to cwd, not this file
+const build = require('node-syncify');
+const method = build(require.resolve('./method.js'));  // relative to cwd, not this file
 const result = method('foo.json');
 
 console.info('did something sync!', result);
@@ -26,7 +25,7 @@ In your helper file (called "method.js" here), do this:
 
 ```js
 // method.js
-import {promises as fsPromises} from 'fs';
+const fs = require('fs').promises;
 
 export default async function(filename) {
   // do something async just for fun
