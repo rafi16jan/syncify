@@ -1,12 +1,11 @@
-
-import { Worker, MessageChannel, receiveMessageOnPort } from 'worker_threads';
+const { Worker, MessageChannel, receiveMessageOnPort } = require('worker_threads');
 
 /**
  * @param {string} workerPath
  * @return {(...args: any) => any}
  */
-export default function build(workerPath) {
-  const taskPath = new URL('./task.js', import.meta.url);
+module.exports = function build(workerPath) {
+  const taskPath = new URL('./task.js', require('url').pathToFileURL(__filename));
   const w = new Worker(taskPath, { workerData: workerPath });
   w.unref();
   let activeCount = 0;
@@ -46,3 +45,5 @@ export default function build(workerPath) {
     }
   };
 }
+
+module.exports.build = module.exports;

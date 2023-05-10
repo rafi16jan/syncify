@@ -1,4 +1,4 @@
-import { workerData, parentPort } from 'worker_threads';
+const { workerData, parentPort } = require('worker_threads');
 
 if (!workerData || !parentPort) {
   throw new Error(`expected path/port`);

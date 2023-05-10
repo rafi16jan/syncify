@@ -2,11 +2,14 @@
   "devDependencies": {
     "@types/node": "^16.3.1"
   },
-  "type": "module",
-  "name": "syncingabout",
-  "version": "0.1.0",
+  "name": "node-syncify",
+  "version": "1.0.0",
   "description": "Convert async methods in worker to sync",
   "main": "index.js",
-  "author": "Sam Thorogood <sam.thorogood@gmail.com>",
+  "author": "Farrell Rafi",
+  "bugs": {
+    "url": "https://github.com/rafi16jan/syncify/issues"
+  },
+  "homepage": "https://github.com/rafi16jan/syncify#readme",
   "license": "Apache-2.0"
 }
