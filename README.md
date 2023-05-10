@@ -15,7 +15,7 @@ In your main file:
 ```js
 // main.js
 const build = require('node-syncify');
-const method = build(require.resolve('./method.js'));  // relative to cwd, not this file
+const method = build(require.resolve('./method.js'));
 const result = method('foo.json');
 
 console.info('did something sync!', result);
