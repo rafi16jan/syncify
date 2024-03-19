@@ -12,7 +12,7 @@ parentPort.on('message', (message) => {
     /** @type {{port: MessagePort, shared: SharedArrayBuffer, args: any[]}} */
     const typedMessage = message;
     const { port, shared, args } = typedMessage;
-    const importPromise = import(workerPath);
+    const importPromise = import(require('url').pathToFileURL(workerPath));
 
     try {
       const { default: method } = await importPromise;

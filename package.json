@@ -3,7 +3,7 @@
     "@types/node": "^16.3.1"
   },
   "name": "node-syncify",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert async methods in worker to sync",
   "main": "index.js",
   "author": "Farrell Rafi",
